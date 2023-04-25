@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #b2a3b5;
+  --secondary: #91818a;
+  --base: #c3baaa;
+  --text: #f2f2f2;
+}
+
+#root,
+body {
+  background-color: var(--base);
+}

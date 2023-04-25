@@ -1,0 +1,18 @@
+GET http://localhost:3001/todos
+
+###
+
+POST http://localhost:3001/todo/new
+Content-Type: application/json
+
+{
+    "text": "fart"
+}
+
+### 
+DELETE http://localhost:3001/todo/delete/6446ce6941446c15df0a9275
+
+
+###
+
+PUT http://localhost:3001/todo/complete/6446ce7741446c15df0a9277
