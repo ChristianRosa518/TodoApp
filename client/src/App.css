@@ -15,3 +15,9 @@
 body {
   background-color: var(--base);
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+}

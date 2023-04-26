@@ -1,0 +1,138 @@
+.container {
+  height: 100%;
+  width: 70%;
+  background-color: #b2e5c3;
+  border-radius: 0px 15px 15px 0px;
+  border-top: 2px solid #5bd584;
+  border-right: 2px solid #5bd584;
+  border-bottom: 2px solid #5bd584;
+  padding: 4%;
+  position: absolute;
+
+  right: -28%;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borderCircle {
+  aspect-ratio: 1 / 1;
+  height: 226px;
+  clip-path: circle();
+  background-color: #108b4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.initialCircle {
+  aspect-ratio: 1 / 1;
+  height: 97%;
+  clip-path: circle();
+  background-color: #14ae5c;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formCircle {
+  aspect-ratio: 1 / 1;
+  height: 80%;
+  clip-path: circle();
+
+  background-color: #f2f2f2;
+
+  /* border-radius: 50%; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  color: #222222;
+}
+
+.formCircle input {
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 15px;
+  height: 30px;
+  width: 150px;
+
+  padding: 10px;
+}
+
+.formCircle input:focus {
+  border: 2px solid #108b4a;
+}
+
+.formCircle button {
+  padding: 8px 15px;
+  border-radius: 15px;
+  border: 2px solid #108b4a;
+
+  background-color: #14ae5c;
+  color: white;
+
+  transform: translateY(10px);
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  transform: translateY(10px);
+}
+
+.showContainer {
+  height: 80%;
+  width: 10%;
+  right: -10%;
+  background-color: #b2e5c3;
+  border-radius: 0px 15px 15px 0px;
+  border-top: 2px solid #5bd584;
+  border-right: 2px solid #5bd584;
+  border-bottom: 2px solid #5bd584;
+  padding: 4%;
+  position: absolute;
+  z-index: 10;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: calc(2em + 0.8vmin);
+  font-weight: bold;
+
+  color: #646464;
+}
+
+.close {
+  position: absolute;
+  top: 0%;
+  right: 2%;
+
+  height: 50px;
+  width: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(2em + 1.2vmin);
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  rotate: 45deg;
+
+  color: #222222;
+}

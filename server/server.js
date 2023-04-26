@@ -1,6 +1,6 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 
@@ -9,24 +9,24 @@ app.use(cors());
 
 mongoose
   .connect(
-    'mongodb+srv://chrisrosa815518:ShadowStory518@loouze.twwf1q6.mongodb.net/mern-todo',
+    "mongodb+srv://chrisrosa815518:ShadowStory518@loouze.twwf1q6.mongodb.net/mern-todo",
     {
       useNewurlParser: true,
       useUnifiedTopology: true,
     }
   )
-  .then(() => console.log('Connected to Db'))
+  .then(() => console.log("Connected to Db"))
   .catch(console.error);
 
-const Todo = require('./models/Todo');
+const Todo = require("./models/Todo");
 
-app.get('/todos', async (req, res) => {
+app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
 
   res.json(todos);
 });
 
-app.post('/todo/new', (req, res) => {
+app.post("/todo/new", (req, res) => {
   const todo = new Todo({
     text: req.body.text,
   });
@@ -36,13 +36,13 @@ app.post('/todo/new', (req, res) => {
   res.json(todo);
 });
 
-app.delete('/todo/delete/:id', async (req, res) => {
+app.delete("/todo/delete/:id", async (req, res) => {
   const result = await Todo.findByIdAndDelete(req.params.id);
 
   res.json({ result });
 });
 
-app.put('/todo/complete/:id', async (req, res) => {
+app.put("/todo/complete/:id", async (req, res) => {
   const todo = await Todo.findById(req.params.id);
 
   todo.complete = !todo.complete;
@@ -52,4 +52,4 @@ app.put('/todo/complete/:id', async (req, res) => {
   res.json(todo);
 });
 
-app.listen(3001, () => console.log('Server Started on port 3001'));
+app.listen(3001, () => console.log("Server Started on port 3001"));
