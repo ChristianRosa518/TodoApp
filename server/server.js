@@ -7,8 +7,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const Todo = require('./models/Todo');
+const Account = require('./models/Account');
+
 mongoose
   .connect(
+    // SERVER KEY BEING SHOWN CHANGE IMMEDIATELY IDIOTTTTTTTTTT
     'mongodb+srv://chrisrosa815518:ShadowStory518@loouze.twwf1q6.mongodb.net/mern-todo',
     {
       useNewurlParser: true,
@@ -17,8 +21,6 @@ mongoose
   )
   .then(() => console.log('Connected to Db'))
   .catch(console.error);
-
-const Todo = require('./models/Todo');
 
 app.get('/todos', async (req, res) => {
   const todos = await Todo.find();
@@ -50,6 +52,16 @@ app.put('/todo/complete/:id', async (req, res) => {
   todo.save();
 
   res.json(todo);
+});
+
+app.post('/register', async (req, res) => {
+  const { username, password, email } = res.body;
+
+  if ((username = Account.findOne(username))) {
+    return res.send({ error: 'Username exists' });
+  }
+  try {
+  } catch (error) {}
 });
 
 app.listen(3001, () => console.log('Server Started on port 3001'));
