@@ -10,9 +10,9 @@ app.use(cors());
 const Todo = require('./models/Todo');
 const Account = require('./models/Account');
 
+// SERVER KEY BEING SHOWN CHANGE IMMEDIATELY IDIOTTTTTTTTTT
 mongoose
   .connect(
-    // SERVER KEY BEING SHOWN CHANGE IMMEDIATELY IDIOTTTTTTTTTT
     'mongodb+srv://chrisrosa815518:ShadowStory518@loouze.twwf1q6.mongodb.net/mern-todo',
     {
       useNewurlParser: true,
@@ -55,13 +55,31 @@ app.put('/todo/complete/:id', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { username, password, email } = res.body;
+  const { username, password, email } = req.body;
 
-  if ((username = Account.findOne(username))) {
+  if (await Account.findOne({ email })) {
+    console.log('username exists');
     return res.send({ error: 'Username exists' });
   }
+
   try {
-  } catch (error) {}
+    const account = new Account({
+      username: username,
+      email: email,
+      password: password,
+    });
+    account.save();
+    res.send({ status: 'Ok' });
+  } catch (error) {
+    res.send({ status: 'error' });
+  }
+});
+
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await Account.findOne({ username });
+  console.log(user);
 });
 
 app.listen(3001, () => console.log('Server Started on port 3001'));
