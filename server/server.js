@@ -19,7 +19,10 @@ mongoose
     useNewurlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Connected to Db"))
+  .then(() => {
+    server.listen(port, () => console.log(`Server Started on port ${port}`));
+    console.log("Connected to Db");
+  })
   .catch(console.error);
 
 app.get("/todos", async (req, res) => {
@@ -91,10 +94,6 @@ app.post("/login", async (req, res) => {
     console.log("Sign in FAILED");
   }
 });
-
-// Server Running
-
-app.listen(process.env.PORT, () => console.log("Server Started on port 3001"));
 
 // Routes
 app.get("/hi", (req, res) => {
