@@ -31,10 +31,6 @@ app.get("/todos", async (req, res) => {
   res.json(todos);
 });
 
-// Todo functions
-//
-//
-
 app.post("/todo/new", (req, res) => {
   const todo = new Todo({
     text: req.body.text,
@@ -100,3 +96,5 @@ app.get("/hi", (req, res) => {
   res.json({ mssg: "Welcom to the app" });
   res.send("Hi");
 });
+
+app.use("/");
