@@ -3,10 +3,13 @@ const express = require("express");
 const http = require("http");
 const mongoose = require("mongoose");
 const cors = require("cors");
+import todos from "./src/Todo/Todo";
 
 const app = express();
 const port = process.env.PORT || 5000;
+const server = http.createServer(app);
 
+app.use("/todos", todos);
 app.use(express.json());
 app.use(cors());
 
@@ -26,8 +29,6 @@ app.get("/todos", async (req, res) => {
 
   res.json(todos);
 });
-
-const server = http.createServer(app);
 
 // Todo functions
 //
@@ -98,6 +99,6 @@ app.post("/login", async (req, res) => {
 app.listen(process.env.PORT, () => console.log("Server Started on port 3001"));
 
 // Routes
-app.get("/", (req, res) => {
+app.get("/hi", (req, res) => {
   res.json({ mssg: "Welcom to the app" });
 });
