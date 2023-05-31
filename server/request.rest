@@ -16,3 +16,22 @@ DELETE http://localhost:3001/todo/delete/6446ce6941446c15df0a9275
 ###
 
 PUT http://localhost:3001/todo/complete/6446ce7741446c15df0a9277
+
+###
+POST http://localhost:3001/register
+Content-Type: application/json
+
+{
+    "email" : "shadowsniper518",
+    "username" : "poopybuttcheeks",
+    "password" : "password"
+}
+
+###
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+    "username" : "poopybuttcheeks",
+    "password" : "password"
+}

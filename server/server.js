@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -7,24 +8,26 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const Todo = require("./models/Todo");
+const Account = require("./models/Account");
+
 mongoose
-  .connect(
-    "mongodb+srv://chrisrosa815518:ShadowStory518@loouze.twwf1q6.mongodb.net/mern-todo",
-    {
-      useNewurlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGODB_USER, {
+    useNewurlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connected to Db"))
   .catch(console.error);
-
-const Todo = require("./models/Todo");
 
 app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
 
   res.json(todos);
 });
+
+// Todo functions
+//
+//
 
 app.post("/todo/new", (req, res) => {
   const todo = new Todo({
@@ -52,4 +55,45 @@ app.put("/todo/complete/:id", async (req, res) => {
   res.json(todo);
 });
 
-app.listen(3001, () => console.log("Server Started on port 3001"));
+app.post("/register", async (req, res) => {
+  const { username, password, email } = req.body;
+
+  if (await Account.findOne({ email })) {
+    console.log("username exists");
+    return res.send({ error: "Username exists" });
+  }
+
+  try {
+    const account = new Account({
+      username: username,
+      email: email,
+      password: password,
+    });
+    account.save();
+    res.send({ status: "Ok" });
+  } catch (error) {
+    res.send({ status: "error" });
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await Account.findOne({ username });
+  if (password === user.password) {
+    res.send({ status: "ok" });
+    console.log("Sign in successful");
+  } else {
+    res.send({ error: "Wrong Password" });
+    console.log("Sign in FAILED");
+  }
+});
+
+// Server Running
+
+app.listen(process.env.PORT, () => console.log("Server Started on port 3001"));
+
+// Routes
+app.get("/", (req, res) => {
+  res.json({ mssg: "Welcom to the app" });
+});

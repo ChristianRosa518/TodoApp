@@ -21,3 +21,9 @@ body {
   justify-content: center;
   align-content: flex-start;
 }
+
+.credits {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}

@@ -3,6 +3,7 @@ import "./App.css";
 
 import TodoList from "./components/TodoList/TodoList";
 import NewTodo from "./components/NewTodo/NewTodo";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const API_BASE = "http://localhost:3001";
 
@@ -19,22 +20,32 @@ function App() {
 
   return (
     <div className={"container"}>
-      <TodoList
-        setTodos={setTodos}
-        todos={todos}
-        API_BASE={API_BASE}
-        show={show}
-      >
-        <NewTodo
-          show={show}
-          setShow={setShow}
-          API_BASE={API_BASE}
-          setTodos={setTodos}
-          todos={todos}
-          newTodo={newTodo}
-          setNewTodo={setNewTodo}
-        />
-      </TodoList>
+      <div className="credits">Designed by my girlfriend; Luz</div>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <TodoList
+                setTodos={setTodos}
+                todos={todos}
+                API_BASE={API_BASE}
+                show={show}
+              >
+                <NewTodo
+                  show={show}
+                  setShow={setShow}
+                  API_BASE={API_BASE}
+                  setTodos={setTodos}
+                  todos={todos}
+                  newTodo={newTodo}
+                  setNewTodo={setNewTodo}
+                />
+              </TodoList>
+            }
+          ></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
