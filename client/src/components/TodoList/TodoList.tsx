@@ -1,9 +1,7 @@
-import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import styles from "./TodoList.module.css";
 
 import { motion, AnimatePresence } from "framer-motion";
-
-import NewTodo from "../NewTodo/NewTodo";
 
 interface todoItem {
   text: string;
