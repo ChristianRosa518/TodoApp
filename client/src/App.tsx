@@ -5,7 +5,7 @@ import TodoList from "./components/TodoList/TodoList";
 import NewTodo from "./components/NewTodo/NewTodo";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const API_BASE = "https://todo-app-lilac-six-20.vercel.app/";
+const API_BASE = "https://todo-app-lilac-six-20.vercel.app";
 
 interface todoItem {
   text: string;
