@@ -27,8 +27,12 @@ mongoose
 app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
 
-  res.json({ todos: todos });
   res.send(todos);
+});
+app.get("/showtodos", async (req, res) => {
+  const todos = await Todo.find();
+
+  res.json({ todos: todos });
 });
 
 app.post("/todo/new", (req, res) => {
@@ -94,7 +98,6 @@ app.post("/login", async (req, res) => {
 // Routes
 app.get("/hi", (req, res) => {
   res.json({ mssg: "Welcom to the app" });
-  res.send("Hi");
 });
 
 app.get("/", (req, res) => {
