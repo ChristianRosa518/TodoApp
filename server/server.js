@@ -97,4 +97,6 @@ app.get("/hi", (req, res) => {
   res.send("Hi");
 });
 
-app.use("/");
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
