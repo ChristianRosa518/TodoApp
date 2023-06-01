@@ -1,12 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 5000;
-const server = http.createServer(app);
 
 app.use(express.json());
 app.use(cors());
@@ -20,7 +18,8 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    server.listen(port, () => console.log(`Server Started on port ${port}`));
+    const port = process.env.PORT || 5000;
+    app.listen(port, () => console.log(`Server Started on port ${port}`));
     console.log("Connected to Db");
   })
   .catch(console.error);
