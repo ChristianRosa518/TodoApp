@@ -36,6 +36,7 @@ app.get("/showtodos", async (req, res) => {
 });
 
 app.post("/todo/new", (req, res) => {
+  console.log(req.body);
   const todo = new Todo({
     text: req.body.text,
   });
